@@ -14,9 +14,9 @@ export function InfiniteSpecies() {
     fetchNextPage,
     hasNextPage,
     isLoading,
-    isFetching,
     isError,
     error,
+    isFetching,
   } = useInfiniteQuery(
     "sw-species",
     ({ pageParam = initialUrl }) => fetchUrl(pageParam),
@@ -27,10 +27,10 @@ export function InfiniteSpecies() {
 
   if (isLoading) return <div className="loading">Loading...</div>;
   if (isError) return <div>Error! {error.toString()}</div>;
+
   return (
     <>
       {isFetching && <div className="loading">Loading...</div>}
-
       <InfiniteScroll loadMore={fetchNextPage} hasMore={hasNextPage}>
         {data.pages.map((pageData) => {
           return pageData.results.map((species) => {
@@ -39,7 +39,7 @@ export function InfiniteSpecies() {
                 name={species.name}
                 language={species.language}
                 averageLifespan={species.averageLifespan}
-              ></Species>
+              />
             );
           });
         })}
