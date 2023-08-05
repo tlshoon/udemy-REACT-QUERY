@@ -39,6 +39,10 @@ export function InfinitePeople() {
 
   return (
     <>
+      {/* 페이지를 처음 열면 사용자 정보가 없으므로 로딩 중입니다. (isLoading: true, isFetching: true)
+      사용자 정보를 성공적으로 불러오면 로딩이 완료됩니다. (isLoading: false, isFetching: false)
+      사용자가 다른 정보를 계속 찾는 상태에서는, 데이터를 계속 가져오고 있으므로 fetching 상태가 됩니다. (isLoading: false, isFetching: true)
+      즉, isLoading은 "지금 로딩 중인가?"를 묻는 것이고, isFetching은 "데이터를 계속 찾고 있는 중인가?"를 묻는 것입니다. */}
       {isFetching && <div className="loading">Loading...</div>}
       <InfiniteScroll loadMore={fetchNextPage} hasMore={hasNextPage}>
         {data.pages.map((pageData) => {
